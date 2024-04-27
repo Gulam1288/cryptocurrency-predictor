@@ -45,7 +45,8 @@ xrp_model.load_weights("models/xrp_model.h5")
 xrp_model.make_predict_function()
 
 def data_extract(sym, start, end):
-    client = Client('8ee716d569eaaac2dce8a4ddea9f9a3d0be43fede96c678b88e555ffbe80f930', 'db4d4ed5bb8da80dd90efa972cc279a79961f08e17921010508bcbd48be5eaf5')
+    #Please create binance account to get these.
+    client = Client('YOUR_API_KEY', 'YOUR_API_SECRET')
     if end =="":
         cryptocurrency = client.get_historical_klines(symbol=sym, interval=Client.KLINE_INTERVAL_30MINUTE, start_str=start)
     else:
