@@ -18,8 +18,6 @@ from binance.client import Client
 
 app = Flask(__name__)
 
-environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
-
 def model_definition():
     model= Sequential()
     model.add(LSTM(256, return_sequences=True, input_shape=(1,1)))
