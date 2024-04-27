@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCRMS - 2024</title>
+    <style>
+        .body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: #4caf50;
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .feature {
+            flex: 1;
+            margin-right: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .news {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .news h2 {
+            color: rgb(195, 52, 52);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .education {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .education h2 {
+            color: rgb(73, 181, 145);
+        }
+
+        .resource a,
+        .news a {
+            color: #4caf50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .resource a:hover {
+            text-decoration: underline;
+        }
+
+        .resource,
+        .article,
+        .crypto {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        i {
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        @media (max-width: 1024px) {
+            .features {
+                flex-direction: column;
+            }
+
+            .feature {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+        }
+
+        footer {
+            text-align: center;
+            background: #1a1a1a;
+            padding: 17px 0 10px;
+            color: #fff;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .crypto .b {
+            color: #f2992a;
+        }
+
+        .crypto .e {
+            color: #627eea;
+        }
+
+        .crypto .l {
+            color: #82aaff;
+        }
+
+        .crypto .r {
+            color: #0080c5;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='bitcoin.ico') }}">
+
+</head>
+
+<body class="body">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body text-light" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" title="icon" href="#"><i class="fas fa-coins"></i></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link  active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/crypto">Predictor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <header>
+            <h1 class="title">Cryptocurrency Risk Management System</h1>
+            <p class="subtitle">
+                Predict cryptocurrency prices with machine learning.
+            </p>
+            <a class="cta-button" href="/crypto">Get Started</a>
+        </header>
+
+        <section class="features">
+            <div class="feature">
+                <img src="https://freepngimg.com/download/bitcoin/59669-cryptocurrency-logo-ethereum-zazzle-bitcoin-hd-image-free-png.png" alt="Bitcoin" />
+                <h2>Bitcoin (BTC)</h2>
+                <p>Track and predict Bitcoin prices accurately.</p>
+            </div>
+            <div class="feature">
+                <img src="https://hashfully.io/images/coins/ethereum.png" alt="Ethereum" />
+                <h2>Ethereum (ETH)</h2>
+                <p>Explore Ethereum trends and forecasts.</p>
+            </div>
+            <div class="feature">
+                <img src="https://miningboosters.com/img/litecoin_home.png" alt="Litecoin" />
+                <h2>Litecoin (LTC)</h2>
+                <p>Get insights into Litecoin price movements.</p>
+            </div>
+            <div class="feature">
+                <img src="https://static.sdexexplorer.com/assets/53674/Z08yX9mXlPWGVpubY2RBZD9CzY0DalH90Ti6Nv8z.png" alt="Litecoin" />
+                <h2>XRP Ripple (XRP)</h2>
+                <p>Dive into XRP coin latest updates.</p>
+            </div>
+        </section>
+        <section class="news">
+            <h2 class="section-title">Cryptocurrency Insights</h2>
+
+            <div class="crypto">
+                <h3 class="b">Bitcoin (BTC)</h3>
+                <p>
+                    Bitcoin is the first and most well-known cryptocurrency. It operates on a decentralized
+                    network and is often referred to as digital gold.
+                    <a rel="noopener" target="_blank" href="https://bitcoin.org/">Learn more about Bitcoin</a>
+                </p>
+            </div>
+
+            <div class="crypto">
+                <h3 class="e">Ethereum (ETH)</h3>
+                <p>
+                    Ethereum is a platform for decentralized applications (dApps) and smart contracts.
+                    It enables developers to build and deploy applications on its blockchain.
+                    <a rel="noopener" target="_blank" href="https://ethereum.org/">Learn more about Ethereum</a>
+                </p>
+            </div>
+
+            <div class="crypto">
+                <h3 class="l">Litecoin (LTC)</h3>
+                <p>
+                    Litecoin is a peer-to-peer cryptocurrency created as a "silver" alternative to Bitcoin.
+                    It shares many similarities with Bitcoin but has faster transaction times.
+                    <a rel="noopener" target="_blank" href="https://litecoin.org/">Learn more about Litecoin</a>
+                </p>
+            </div>
+
+            <div class="crypto">
+                <h3 class="r">Ripple (XRP)</h3>
+                <p>
+                    Ripple is both a platform and a cryptocurrency known for its focus on fast,
+                    low-cost cross-border payments. It aims to bridge the gap between traditional
+                    finance and blockchain technology.
+                    <a rel="noopener" target="_blank" href="https://ripple.com/xrp/">Learn more about Ripple (XRP)</a>
+                </p>
+            </div>
+        </section>
+        <section class="education">
+            <h2 class="section-title">Crypto Education</h2>
+            <div class="resource">
+                <h3>Introduction to Blockchain</h3>
+                <p>
+                    Learn about the fundamentals of blockchain technology. Explore
+                    <a rel="noopener" href="https://www.investopedia.com/terms/b/blockchain.asp" target="_blank">Blockchain at Investopedia</a>
+                </p>
+            </div>
+            <div class="resource">
+                <h3>Cryptocurrency Investing Guide</h3>
+                <p>
+                    Explore strategies for investing in cryptocurrencies. Check out
+                    <a rel="noopener" href="https://www.coindesk.com/" target="_blank">How to Invest in Bitcoin at CoinDesk</a>.
+                </p>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>@Miniproject 2024</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        // GSAP animations
+        gsap.from(".title, .subtitle, .cta-button", {
+            duration: 1,
+            y: -50,
+            opacity: 0,
+            ease: "power3.out",
+        });
+        gsap.from(".feature", {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            delay: 1,
+            ease: "power3.out",
+        });
+        gsap.from(".news", {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            delay: 1.5,
+            ease: "power3.out",
+        });
+        gsap.from(".education", {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            stagger: 0.2,
+            delay: 2,
+            ease: "power3.out",
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>
